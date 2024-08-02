@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Component 2
+model Comparison {
+  id        Int    @id @default(autoincrement())
+  month     String @unique
+  last_year Int
+  this_year Int
+}
+
+// Component 6
+model TopProducts {
+  id          Int    @id @default(autoincrement())
+  product     String @unique
+  sold_amount Int
+  unit_price  Int
+  revenue     Int
+  rating      Float
+}
+
+// Component 4
+model CustomerByDevice {
+  id            Int      @id @default(autoincrement())
+  date          DateTime @unique
+  web_sales     Int
+  offline_sales Int
+}
